@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: D:\Re-Learn\demo_api_tss\demo_TSS\target\classes\com\example
+ \demo_tss.DemoTssApplication
+
