@@ -71,7 +71,43 @@
 
     </dependencies>
     <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-webapp-maven-plugin</artifactId>
+                <version>1.14.0</version>
+                <configuration>
+                    <schemaVersion>v2</schemaVersion>
+                    <subscriptionId>eda14459-d0bc-4630-83c2-dee8c5e86aea</subscriptionId>
+                    <resourceGroup>rg-ticket-vleague</resourceGroup>
+                    <appName>ticketss</appName>
+                    <pricingTier>F1</pricingTier>
+                    <region>centralus</region>
+                    <runtime>
+                        <os>Linux</os>
+                        <javaVersion>Java 11</javaVersion>
+                        <webContainer>Java SE</webContainer>
+                    </runtime>
+                    <deployment>
+                        <resources>
+                            <resource>
+                                <directory>${project.basedir}/target</directory>
+                                <includes>
+                                    <include>*.jar</include>
+                                </includes>
+                            </resource>
+                        </resources>
+                    </deployment>
+                </configuration>
+            </plugin>
 
+        </plugins>
+    </build>
 
 
 </project>
