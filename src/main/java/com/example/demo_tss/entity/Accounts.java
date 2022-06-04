@@ -24,4 +24,24 @@ public class Accounts {
     private String phone;
     private int role_id;
 
+
+
+    // Exception
+    // Controller Advices => Xử lý response exception
+    // Định nghĩa exception -> throw cho controller advice.
+
+    // Security
+    // JWT
+    // create by, create date, last update by, last update date
+    // Spring data JPA Auditing
+
+    // Google authen hoặc firebase
+    // return về access token
+    // FE set token vào request header để gọi xuống api
+    // Authentication Filter
+    // Trong filter -> decode token ra để lấy thông tin
+    // xác thực lại thông tin (token còn hạn dùng hay không, user được access vào api hay ko,...)
+    // Nếu xác thực thành công -> gọi thực hiện api
+    // Nếu ko thành công thì response lỗi về
+
 }

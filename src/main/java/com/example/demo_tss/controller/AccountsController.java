@@ -8,36 +8,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/account")
 public class AccountsController {
 
     @Autowired
     private AccountsService service;
 
-    @PostMapping("/addAccount")
+    @PostMapping
     public Accounts addAccount(@RequestBody Accounts accounts){
         return service.saveAccount(accounts);
     }
-    @GetMapping("/getAccounts")
+    @GetMapping
     public List<Accounts> findAllAccounts(){
+        // spring boot Criteria / specification
         return service.getAccounts();
     }
 
-    @GetMapping("/getAccountById/{id}")
+    @GetMapping("/{id}")
     public Accounts findAccountByID(@PathVariable int id){
         return service.getAccountByID(id);
     }
 
-    @GetMapping("getAccountsByLastname/{lastname}")
+    @GetMapping("/{lastname}")
     public List <Accounts> findAccountLastname(@PathVariable String lastname){
         return service.getAccountsByLastname(lastname);
     }
 
-    @PutMapping("/updateAccount")
+    @PutMapping
     public Accounts updateAccount(@RequestBody Accounts accounts){
         return service.saveAccount(accounts);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public String deleteAccount(@PathVariable int id){
 
         return service.deleteAccounts(id);

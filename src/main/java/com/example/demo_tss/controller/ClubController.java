@@ -8,37 +8,37 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/club")
 
 public class ClubController {
     @Autowired
     private ClubService service;
 
-    @PostMapping("/addClub")
+    @PostMapping()
     public Club addClub(@RequestBody Club club){
         return service.saveClub(club);
     }
-    @GetMapping("/getClubs")
+    @GetMapping()
     public List<Club> findAllArea(){
         return service.getClub();
     }
 
-    @GetMapping("/getClubById/{id}")
+    @GetMapping("/{id}")
     public Club findClubByID(@PathVariable int id){
         return service.getClubByID(id);
     }
 
-    @GetMapping("getClubByStadiumId/{stadiumId}")
+    @GetMapping("/stadiumId/{stadiumId}")
     public List <Club> findClubByStadiumId(@PathVariable int stadiumId){
         return service.getClubByStadiumId(stadiumId);
     }
 
-    @PutMapping("/updateClub")
+    @PutMapping()
     public Club updateClub(@RequestBody Club club){
         return service.saveClub(club);
     }
 
-    @DeleteMapping("/deleteClub/{id}")
+    @DeleteMapping("/{id}")
     public String deleteClub(@PathVariable int id){
 
         return service.deleteClub(id);

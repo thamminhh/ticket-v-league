@@ -8,36 +8,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/stadium")
 public class StadiumController {
     @Autowired
     private StadiumService service;
 
-    @PostMapping("/addStadium")
+    @PostMapping()
     public Stadium addStadium(@RequestBody Stadium stadium){
         return service.saveStadium(stadium);
     }
-    @GetMapping("/getStadiums")
+    @GetMapping()
     public List<Stadium> findAllStadium(){
         return service.getStadium();
     }
 
-    @GetMapping("/getStadiumById/{id}")
+    @GetMapping("/{id}")
     public Stadium findStadiumByID(@PathVariable int id){
         return service.getStadiumByID(id);
     }
 
-    @GetMapping("getStadiumsByStadiumName/{stadiumName}")
-    public List <Stadium> findStadiumByName(@PathVariable String stadiumName){
-        return service.getStadiumByStadiumName(stadiumName);
-    }
+//    @GetMapping("stadiumName/{stadiumName}")
+//    public List <Stadium> findStadiumByName(@PathVariable String stadiumName){
+//        return service.getStadiumByStadiumName(stadiumName);
+//    }
 
-    @PutMapping("/updateStadium")
+    @PutMapping("")
     public Stadium updateStadium(@RequestBody Stadium stadium){
         return service.saveStadium(stadium);
     }
 
-    @DeleteMapping("/deleteStadium/{id}")
+    @DeleteMapping("/{id}")
     public String deteleStadium(@PathVariable int id){
 
         return service.deleteStadium(id);

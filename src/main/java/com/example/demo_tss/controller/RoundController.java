@@ -8,36 +8,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/round")
 public class RoundController {
     @Autowired
     private RoundService service;
 
-    @PostMapping("/addRound")
+    @PostMapping()
     public Round addRound(@RequestBody Round round){
         return service.saveRound(round);
     }
-    @GetMapping("/getRounds")
+    @GetMapping()
     public List<Round> findAllRound(){
         return service.getRound();
     }
 
-    @GetMapping("/getRoundById/{id}")
+    @GetMapping("/{id}")
     public Round findRoundByID(@PathVariable int id){
         return service.getRoundByID(id);
     }
 
-    @GetMapping("getRoundByTournamentId/{tournamentId}")
+    @GetMapping("tournamentId/{tournamentId}")
     public List <Round> findRoundByTournamentId(@PathVariable int tournamentId){
         return service.getRoundByTournamentId(tournamentId);
     }
 
-    @PutMapping("/updateRound")
+    @PutMapping()
     public Round updateRound(@RequestBody Round round){
         return service.saveRound(round);
     }
 
-    @DeleteMapping("/deleteRound/{id}")
+    @DeleteMapping("/{id}")
     public String deleteRound(@PathVariable int id){
 
         return service.deletetRound(id);

@@ -8,45 +8,45 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/match")
 
 public class MatchController {
 
     @Autowired
     private MatchService service;
 
-    @PostMapping("/addMatch")
+    @PostMapping()
     public Match addMatch(@RequestBody Match match){
         return service.saveMatch(match);
     }
-    @GetMapping("/getMatchs")
+    @GetMapping()
     public List<Match> findAllMatch(){
         return service.getMatch();
     }
 
-    @GetMapping("/getMatchById/{id}")
+    @GetMapping("/{id}")
     public Match findMatchByID(@PathVariable int id){
         return service.getMatchByID(id);
     }
 
-    @GetMapping("getMatchByStadiumId/{stadiumId}")
+    @GetMapping("stadiumId/{stadiumId}")
     public List <Match> findMatchByStadiumId(@PathVariable int stadiumId){
         return service.getMatchByStadiumId(stadiumId);
     }
-    @GetMapping("getMatchByClubHomeId/{clubHomeId}")
+    @GetMapping("clubHomeId/{clubHomeId}")
     public List <Match> findMatchByClubHomeId(@PathVariable int clubHomeId){
         return service.getMatchByClubHomeId(clubHomeId);
     }
-    @GetMapping("getMatchByClubVisitorId/{clubVisitorId}")
+    @GetMapping("clubVisitorId/{clubVisitorId}")
     public List <Match> findMatchByClubVisitorId(@PathVariable int clubVisitorId){
         return service.getMatchByClubVisitorId(clubVisitorId);
     }
-    @PutMapping("/updateMatch")
+    @PutMapping()
     public Match updateMatch(@RequestBody Match match){
         return service.saveMatch(match);
     }
 
-    @DeleteMapping("/deleteMatch/{id}")
+    @DeleteMapping("/{id}")
     public String deleteMatch(@PathVariable int id){
 
         return service.deleteMatch(id);

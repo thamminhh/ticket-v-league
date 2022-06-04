@@ -8,36 +8,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/area")
 public class AreaController {
     @Autowired
     private AreaService service;
 
-    @PostMapping("/addArea")
+    @PostMapping()
     public Area addArea(@RequestBody Area area){
         return service.saveArea(area);
     }
-    @GetMapping("/getAreas")
+    @GetMapping()
     public List<Area> findAllArea(){
         return service.getArea();
     }
 
-    @GetMapping("/getAreaById/{id}")
+    @GetMapping("/{id}")
     public Area findAreaByID(@PathVariable int id){
         return service.getAreaByID(id);
     }
 
-    @GetMapping("getAreaByStadiumId/{stadiumId}")
+    @GetMapping("/stadiumId/{stadiumId}")
     public List <Area> findAreaByStadiumId(@PathVariable int stadiumId){
         return service.getAreaByStadiumId(stadiumId);
     }
 
-    @PutMapping("/updateArea")
+    @PutMapping()
     public Area updateArea(@RequestBody Area area){
         return service.saveArea(area);
     }
 
-    @DeleteMapping("/deleteArea/{id}")
+    @DeleteMapping("/{id}")
     public String deleteArea(@PathVariable int id){
 
         return service.deleteArea(id);

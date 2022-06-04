@@ -8,38 +8,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ticketType")
 
 public class TicketTypeController {
 
     @Autowired
     private TicketTypeService service;
 
-    @PostMapping("/addTicketType")
+    @PostMapping()
     public TicketType addTicketType(@RequestBody TicketType ticketType){
         return service.saveTicketType(ticketType);
     }
-    @GetMapping("/getTicketTypes")
+    @GetMapping()
     public List<TicketType> findAllTicketType(){
         return service.getTicketType();
     }
 
-    @GetMapping("/getTicketTypeById/{id}")
+    @GetMapping("/{id}")
     public TicketType findTicketTypeByID(@PathVariable int id){
         return service.getTicketTypeByID(id);
     }
 
-    @GetMapping("getTicketTypeSystemTicketTypeId/{systemTicketTypeId}")
+    @GetMapping("systemTicketTypeId/{systemTicketTypeId}")
     public List <TicketType> findTicketTypeBySystemTicketTypeId(@PathVariable int systemTicketTypeId){
         return service.getTicketTypeBySystemTicketTypeId(systemTicketTypeId);
     }
 
-    @PutMapping("/updateTicketType")
+    @PutMapping()
     public TicketType updateTicketType(@RequestBody TicketType ticketType){
         return service.saveTicketType(ticketType);
     }
 
-    @DeleteMapping("/deleteTicketType/{id}")
+    @DeleteMapping("/{id}")
     public String deleteTicketType(@PathVariable int id){
         return service.deleteTicketType(id);
     }

@@ -11,7 +11,12 @@ import java.util.List;
 @Service
 @Transactional
 public class AccountsService {
-
+//dependency injection
+    // Class Animal
+    // Animal animal = new Animal
+    // Bean
+    // Start spring boot -> scan toàn bộ project -> @Service, @Repository, @Controller, @Componet,.. tạo thành bean bỏ trong context
+    // @Autowire, constructor gọi (inject) bean ra và sử dụng
     @Autowired
     private AccountsRepository repository;
 

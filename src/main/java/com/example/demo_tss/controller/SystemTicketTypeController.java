@@ -7,37 +7,37 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/systemTicketType")
 public class SystemTicketTypeController {
     @Autowired
     private SystemTicketTypeService service;
 
-    @PostMapping("/addSystemTicketType")
+    @PostMapping()
     public SystemTicketType addSystemTicketType(@RequestBody SystemTicketType systemTicketType){
         return service.saveSystemTicketType(systemTicketType);
     }
-    @GetMapping("/getSystemTicketTypes")
+    @GetMapping()
     public List<SystemTicketType> findAllSystemTicketType(){
         return service.getSystemTicketType();
     }
 
-    @GetMapping("/getSystemTicketTypeById/{id}")
+    @GetMapping("/{id}")
     public SystemTicketType findSystemTicketTypeByID(@PathVariable int id){
         return service.getSystemTicketTypeByID(id);
     }
 
-    @GetMapping("getSystemTicketTypeBySystemTicketTypeName/{systemTicketTypeName}")
-    public List <SystemTicketType> findSystemTicketTypeBySystemTicketTypeName(@PathVariable String systemTicketTypeName){
-        return service.getSystemTicketTypeBySystemTicketTypeName(systemTicketTypeName);
-    }
+//    @GetMapping("systemTicketTypeName/{systemTicketTypeName}")
+//    public List <SystemTicketType> findSystemTicketTypeBySystemTicketTypeName(@PathVariable String systemTicketTypeName){
+//        return service.getSystemTicketTypeBySystemTicketTypeName(systemTicketTypeName);
+//    }
 
-    @PutMapping("/updateSystemTicketType")
+    @PutMapping()
     public SystemTicketType updateSystemTicketType(@RequestBody SystemTicketType systemTicketType){
         return service.saveSystemTicketType(systemTicketType);
     }
 
-    @DeleteMapping("/deleteSystemTicketType/{id}")
-    public String deletedeleteArea(@PathVariable int id){
+    @DeleteMapping("/{id}")
+    public String deleteSystemTicketType(@PathVariable int id){
 
         return service.deleteSystemTicketType(id);
     }

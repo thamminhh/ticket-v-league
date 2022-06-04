@@ -8,37 +8,37 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/tournament")
 public class TournamentController {
 
     @Autowired
     private TournamentService service;
 
-    @PostMapping("/addTournament")
+    @PostMapping()
     public Tournament addTournament(@RequestBody Tournament tournament){
         return service.saveTournament(tournament);
     }
-    @GetMapping("/getTournaments")
+    @GetMapping()
     public List<Tournament> findAllTournament(){
         return service.getTournaments();
     }
 
-    @GetMapping("/getTournamentById/{id}")
+    @GetMapping("/{id}")
     public Tournament findTournamentByID(@PathVariable int id){
         return service.getTournamentByID(id);
     }
 
-    @GetMapping("getTournamentByName/{tournamentName}")
-    public List <Tournament> findTournamentName(@PathVariable String tournamentName){
-        return service.getTournamentName(tournamentName);
-    }
+//    @GetMapping("getTournamentByName/{tournamentName}")
+//    public List <Tournament> findTournamentName(@PathVariable String tournamentName){
+//        return service.getTournamentName(tournamentName);
+//    }
 
-    @PutMapping("/updateTournament")
+    @PutMapping()
     public Tournament updateTournament(@RequestBody Tournament tournament){
         return service.updateTournament(tournament);
     }
 
-    @DeleteMapping("/deleteTournament/{id}")
+    @DeleteMapping("/{id}")
     public String deleteTournament(@PathVariable int id){
         return service.deleteTournament(id);
     }
