@@ -29,6 +29,7 @@ public class Accounts {
     // Exception
     // Controller Advices => Xử lý response exception
     // Định nghĩa exception -> throw cho controller advice.
+    // xu li response
 
     // Security
     // JWT
