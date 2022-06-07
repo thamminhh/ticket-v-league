@@ -29,10 +29,10 @@ public class AccountsController {
         return service.getAccountByID(id);
     }
 
-    @GetMapping("/{lastname}")
-    public List <Accounts> findAccountLastname(@PathVariable String lastname){
-        return service.getAccountsByLastname(lastname);
-    }
+//    @GetMapping("/{lastname}")
+//    public List <Accounts> findAccountLastname(@PathVariable String lastname){
+//        return service.getAccountsByLastname(lastname);
+//    }
 
     @PutMapping
     public Accounts updateAccount(@RequestBody Accounts accounts){
