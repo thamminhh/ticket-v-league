@@ -28,6 +28,7 @@ public class AccountsService {
         return repository.saveAll(accounts);
     }
     public List<Accounts> getAccounts(){
+
         return repository.findAll();
     }
     public Accounts getAccountByID(int id){
