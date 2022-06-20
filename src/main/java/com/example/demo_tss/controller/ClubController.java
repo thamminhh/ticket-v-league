@@ -19,7 +19,7 @@ public class ClubController {
         return service.saveClub(club);
     }
     @GetMapping()
-    public List<Club> findAllArea(){
+    public List<Club> findAllClubs(){
         return service.getClub();
     }
 
