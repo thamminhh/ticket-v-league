@@ -17,7 +17,7 @@ public class Club {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int stadiumId;
+    private Integer stadiumId;
     private String clubName;
     private String img;
     private String country;
