@@ -34,10 +34,10 @@ public class AccountsService {
     public Accounts getAccountByID(int id){
         return repository.findById(id).orElse(null);
     }
-    public List<Accounts> getAccountsByLastname(String lastname){
-
-        return repository.findByLastname(lastname);
-    }
+//    public List<Accounts> getAccountsByLastname(String lastname){
+//
+//        return repository.findByLastname(lastname);
+//    }
     public String deleteAccounts(int id){
         repository.deleteById(id);
         return "Accounts removed " + id;

@@ -27,10 +27,10 @@ public class TournamentService {
         return repository.findById(id).orElse(null);
     }
 
-    public List<Tournament> getTournamentName(String tournamentName) {
-
-        return repository.findByTournamentName(tournamentName);
-    }
+//    public List<Tournament> getTournamentName(String tournamentName) {
+//
+//        return repository.findByTournamentName(tournamentName);
+//    }
 
     public String deleteTournament(int id) {
         repository.deleteById(id);

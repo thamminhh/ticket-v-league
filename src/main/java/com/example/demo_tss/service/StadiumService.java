@@ -30,10 +30,10 @@ public class StadiumService {
     public Stadium getStadiumByID(int id){
         return repository.findById(id).orElse(null);
     }
-    public List<Stadium> getStadiumByStadiumName(String stadiumName){
-
-        return repository.findByStadiumName(stadiumName);
-    }
+//    public List<Stadium> getStadiumByStadiumName(String stadiumName){
+//
+//        return repository.findByStadiumName(stadiumName);
+//    }
     public String deleteStadium(int id){
         repository.deleteById(id);
         return "Stadium removed " + id;
