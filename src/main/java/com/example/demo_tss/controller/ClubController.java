@@ -40,7 +40,7 @@ public class ClubController {
     public Club addClub(@RequestBody Club club){
         return service.saveClub(club);
     }
-    @GetMapping()
+    @GetMapping(produces = "application/json; charset=utf-8")
     public ResponseEntity<Map<String, Object>> getClubs(
             @RequestParam(required = false) String clubName,
             @RequestParam(defaultValue = "0") int page,

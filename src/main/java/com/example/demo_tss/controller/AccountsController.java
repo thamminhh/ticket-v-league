@@ -41,7 +41,7 @@ public class AccountsController {
 
         return service.saveAccount(accounts);
     }
-    @GetMapping
+    @GetMapping (produces = "application/json; charset=utf-8")
     public ResponseEntity<Map<String, Object>> getAccounts(
             @RequestParam(required = false) String firstname,
             @RequestParam(defaultValue = "0") int page,

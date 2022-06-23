@@ -40,7 +40,7 @@ public class TournamentController {
     public Tournament addTournament(@RequestBody Tournament tournament){
         return service.saveTournament(tournament);
     }
-    @GetMapping()
+    @GetMapping(produces = "application/json; charset=utf-8")
     public ResponseEntity<Map<String, Object>> getTournaments(
             @RequestParam(required = false) String tournamentName,
             @RequestParam(defaultValue = "0") int page,

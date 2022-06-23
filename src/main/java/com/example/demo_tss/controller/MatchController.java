@@ -46,7 +46,7 @@ public class MatchController {
     public Match addMatch(@RequestBody Match match){
         return service.saveMatch(match);
     }
-    @GetMapping()
+    @GetMapping(produces = "application/json; charset=utf-8")
     public ResponseEntity<Map<String, Object>> getMatches(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size,

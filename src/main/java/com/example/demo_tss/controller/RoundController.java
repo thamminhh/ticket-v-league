@@ -41,7 +41,7 @@ public class RoundController {
         return service.saveRound(round);
     }
 
-    @GetMapping()
+    @GetMapping(produces = "application/json; charset=utf-8")
     public ResponseEntity<Map<String, Object>> getRound(
             @RequestParam(required = false) String roundName,
             @RequestParam(defaultValue = "0") int page,

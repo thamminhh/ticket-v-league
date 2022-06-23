@@ -17,7 +17,7 @@ public class AreaController {
     public Area addArea(@RequestBody Area area){
         return service.saveArea(area);
     }
-    @GetMapping()
+    @GetMapping(produces = "application/json; charset=utf-8")
     public List<Area> findAllArea(){
         return service.getArea();
     }

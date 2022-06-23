@@ -40,7 +40,7 @@ public class StadiumController {
     public Stadium addStadium(@RequestBody Stadium stadium){
         return service.saveStadium(stadium);
     }
-    @GetMapping()
+    @GetMapping(produces = "application/json; charset=utf-8")
     public ResponseEntity<Map<String, Object>> getStadiums(
             @RequestParam(required = false) String stadiumName,
             @RequestParam(defaultValue = "0") int page,
