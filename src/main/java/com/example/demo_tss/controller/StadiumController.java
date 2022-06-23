@@ -66,7 +66,7 @@ public class StadiumController {
             Page<Stadium> pageTuts;
 
             if (stadiumName == null)
-                pageTuts = stadiumRepository.findAll(pagingSort);
+                pageTuts = stadiumRepository.findAllInfo(pagingSort);
             else
                 pageTuts = stadiumRepository.findByStadiumNameContaining(stadiumName, pagingSort);
 

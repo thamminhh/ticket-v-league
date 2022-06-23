@@ -1,8 +1,10 @@
 package com.example.demo_tss.controller;
 
 import com.example.demo_tss.entity.Match;
+import com.example.demo_tss.entity.MatchesInfoDTO;
 import com.example.demo_tss.repository.MatchRepository;
 import com.example.demo_tss.service.MatchService;
+import io.swagger.models.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +30,7 @@ public class MatchController {
 
     @Autowired
     private MatchRepository matchRepository;
+
 
     private Sort.Direction getSortDirection(String direction) {
         if (direction.equals("asc")) {
@@ -66,10 +70,11 @@ public class MatchController {
 
             Page<Match> pageTuts;
 
-                pageTuts = matchRepository.findAll(pagingSort);
-
+                pageTuts = matchRepository.findAllInfo(pagingSort);
 
             matches = pageTuts.getContent();
+            System.out.println(matches);
+
 
             Map<String, Object> response = new HashMap<>();
             response.put("matches", matches);

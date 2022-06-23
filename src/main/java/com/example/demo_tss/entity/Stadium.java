@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,4 +20,7 @@ public class Stadium {
     private String location;
     private String capacity;
     private String img;
+//    @OneToMany(targetEntity = Match.class, cascade = CascadeType.ALL)
+//    @JoinColumn(name ="stadiumId", referencedColumnName = "id")
+//    private List<Match> matches;
 }

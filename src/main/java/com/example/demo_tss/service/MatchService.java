@@ -22,9 +22,9 @@ public class MatchService {
     public List<Match>  saveMatch(List<Match> match){
         return repository.saveAll(match);
     }
-    public List<Match> getMatch(){
-        return repository.findAll();
-    }
+//    public List<Match> getMatch(){
+//        return repository.findAll();
+//    }
     public Match getMatchByID(int id){
         return repository.findById(id).orElse(null);
     }
