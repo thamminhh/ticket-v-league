@@ -16,9 +16,9 @@ public interface StadiumRepository extends JpaRepository<Stadium, Integer> {
 
 
     @Query(value = "select * from stadium s inner join \n" +
-            "matchs m on m.stadiumId = s.id ",
+            "matches m on m.stadiumId = s.id ",
             countQuery = "select count(*) from stadium s inner join \n" +
-                    "matchs m on m.stadiumId = s.id  order by s.id;",
+                    "matches m on m.stadiumId = s.id  order by s.id;",
             nativeQuery = true)
     Page<Stadium> findAllInfo(Pageable pagingSort);
 }

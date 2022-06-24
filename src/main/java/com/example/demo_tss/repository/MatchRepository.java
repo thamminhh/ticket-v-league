@@ -22,10 +22,10 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
 
     List<Match> findByClubVisitorId(int clubVisitorId);
 
-    @Query(value = "select * from matchs m inner join \n" +
+    @Query(value = "select * from matches m inner join \n" +
             "stadium s on m.stadiumId = s.id  inner join club c on m.clubHomeId = c.id \n" +
             "inner join club c1 on m.clubVisitorId = c1.id",
-            countQuery = "select count(*) from matchs m inner join \n" +
+            countQuery = "select count(*) from matches m inner join \n" +
                     "stadium s on m.stadiumId = s.id  inner join club c on m.clubHomeId = c.id \n" +
                     "inner join club c1 on m.clubVisitorId = c1.id order by m.id;",
             nativeQuery = true)
