@@ -25,7 +25,6 @@ public class Accounts {
     private int role_id;
 
 
-
     // Exception
     // Controller Advices => Xử lý response exception
     // Định nghĩa exception -> throw cho controller advice.

@@ -31,5 +31,6 @@ public class Match {
     @JoinColumn(name ="clubVisitorId", referencedColumnName = "id", insertable = false, updatable = false)
     private Club clubVisitor;
     private String timeStart;
+    private boolean status;
 
 }

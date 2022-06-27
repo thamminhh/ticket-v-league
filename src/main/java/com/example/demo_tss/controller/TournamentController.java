@@ -66,7 +66,7 @@ public class TournamentController {
             Page<Tournament> pageTuts;
 
             if (tournamentName == null)
-                pageTuts = tournamentRepository.findAll(pagingSort);
+                pageTuts = tournamentRepository.findAllStatusActive(pagingSort);
             else
                 pageTuts = tournamentRepository.findByTournamentNameContaining(tournamentName, pagingSort);
 

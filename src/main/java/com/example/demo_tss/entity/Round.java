@@ -17,7 +17,11 @@ public class Round {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int tournamentId;
+    @ManyToOne(targetEntity = Tournament.class, cascade = CascadeType.ALL)
+    @JoinColumn(name ="tournamentId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Tournament tournament;
     private String roundName;
     private String startDate;
     private String endDate;
+    private boolean status;
 }

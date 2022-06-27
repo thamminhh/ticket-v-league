@@ -7,18 +7,17 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "tournament")
+@Table(name = "orderDetail")
 
-public class Tournament {
+
+public class OrderDetail {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String tournamentName;
-    private String startDate;
-    private String endDate;
-    private boolean status;
-
+    private int ticketId;
+    private int quantity;
 }

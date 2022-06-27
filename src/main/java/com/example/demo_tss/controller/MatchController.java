@@ -1,10 +1,8 @@
 package com.example.demo_tss.controller;
 
 import com.example.demo_tss.entity.Match;
-import com.example.demo_tss.entity.MatchesInfoDTO;
 import com.example.demo_tss.repository.MatchRepository;
 import com.example.demo_tss.service.MatchService;
-import io.swagger.models.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +46,7 @@ public class MatchController {
     @GetMapping(produces = "application/json; charset=utf-8")
     public ResponseEntity<Map<String, Object>> getMatches(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "3") int size,
+            @RequestParam(defaultValue = "7") int size,
             @RequestParam(defaultValue = "id,desc") String[] sort) {
         try {
             List<Sort.Order> orders = new ArrayList<Sort.Order>();
