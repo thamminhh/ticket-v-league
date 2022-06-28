@@ -19,5 +19,4 @@ public class Area {
     private String areaName;
     private int stadiumId;
     private int capacity;
-    private boolean status;
 }

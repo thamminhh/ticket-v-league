@@ -28,7 +28,6 @@ public class PaymentMethodController {
         return service.getPaymentMethodByID(id);
     }
 
-
     @PutMapping()
     public PaymentMethod updatePaymentMethod(@RequestBody PaymentMethod paymentMethod){
         return service.savePaymentMethod(paymentMethod);
