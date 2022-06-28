@@ -19,4 +19,5 @@ public class TicketType {
     private String ticketTypeName;
     private int systemTicketTypeId;
     private double price;
+    private int amount;
 }
