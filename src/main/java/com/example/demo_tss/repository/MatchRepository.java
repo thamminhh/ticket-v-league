@@ -20,7 +20,8 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
 
     @Query(value = "select m.id, m.roundId, m.stadiumId, m.clubHomeId, m.clubVisitorId, m.timeStart,m.status, s.id, s.stadiumName, s.location, s.capacity, s.img,\n" +
             "c.id, c.stadiumId, c.clubName, c.img, c.country,\n" +
-            "c1.id, c1.stadiumId, c1.clubName, c1.img, c1.country from matches m inner join \n" +
+            "c1.id, c1.stadiumId, c1.clubName, c1.img, c1.country " +
+            "from matches m inner join \n" +
             "stadium s on m.stadiumId = s.id  inner join club c on m.clubHomeId = c.id \n" +
             "inner join club c1 on m.clubVisitorId = c1.id where m.status = '1'",
             countQuery = "select count(*) from matches m inner join \n" +

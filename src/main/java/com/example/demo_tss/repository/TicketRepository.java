@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 
 public interface TicketRepository extends JpaRepository<Ticket, Integer> {
-    List<Ticket> findByTicketTypeId(int ticketTypeId);
+//    List<Ticket> findByTicketTypeId(int ticketTypeId);
 
     List<Ticket> findByMatchId(int ticketTypeId);
 }
