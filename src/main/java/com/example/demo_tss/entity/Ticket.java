@@ -16,9 +16,9 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int accountId;
-    private int areaId;
     private int matchId;
-    private int orderDetailId;
+    private int areaId;
+    private double price;
+    private int amount;
 
 }

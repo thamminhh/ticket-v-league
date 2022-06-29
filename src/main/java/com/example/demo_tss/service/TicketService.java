@@ -42,10 +42,12 @@ public class TicketService {
         repository.deleteById(id);
         return "Ticket removed " + id;
     }
-//    public Ticket updateTicket(Ticket ticket){
-//        Ticket existingTicket= repository.findById(ticket.getId()).orElse(null);
-//        existingTicket.setTicketTypeId(ticket.getTicketTypeId());
-//        existingTicket.setMatchId(ticket.getMatchId());
-//        return repository.save(existingTicket);
-//    }
+    public Ticket updateTicket(Ticket ticket){
+        Ticket existingTicket= repository.findById(ticket.getId()).orElse(null);
+        existingTicket.setMatchId(ticket.getMatchId());
+        existingTicket.setAreaId(ticket.getAreaId());
+        existingTicket.setPrice(ticket.getPrice());
+        existingTicket.setAmount(ticket.getAmount());
+        return repository.save(existingTicket);
+    }
 }

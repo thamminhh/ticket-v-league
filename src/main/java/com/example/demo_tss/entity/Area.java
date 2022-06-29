@@ -19,8 +19,4 @@ public class Area {
     private String areaName;
     private int stadiumId;
     private int capacity;
-    private int ticketTypeId;
-    @ManyToOne( targetEntity = TicketType.class,cascade = CascadeType.ALL)
-    @JoinColumn(name ="ticketTypeId", referencedColumnName = "id", insertable = false, updatable = false)
-    private TicketType ticketType;
 }

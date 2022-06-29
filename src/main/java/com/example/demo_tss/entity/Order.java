@@ -1,6 +1,5 @@
 package com.example.demo_tss.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,14 +10,12 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "club")
+@Table(name = "orders")
 
-public class Club {
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Integer stadiumId;
-    private String clubName;
-    private String img;
-    private String country;
+    private Integer accountId;
+    private String orderDate;
 }

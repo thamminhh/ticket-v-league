@@ -30,10 +30,6 @@ public class TicketController {
         return service.getTicketByID(id);
     }
 
-//    @GetMapping("ticketTypeId/{ticketTypeId}")
-//    public List <Ticket> findAreaByStadiumId(@PathVariable int ticketTypeId){
-//        return service.getTicketByTicketTypeId(ticketTypeId);
-//    }
 
     @GetMapping("matchId/{matchId}")
     public List <Ticket> findTicketByMatchId(@PathVariable int matchId){

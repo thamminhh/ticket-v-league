@@ -41,30 +41,31 @@ public class AreaController {
         return service.saveArea(area);
     }
     @GetMapping(produces = "application/json; charset=utf-8")
-    public ResponseEntity<Map<String, Object>> getAreas(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "4") int size,
-            @RequestParam(defaultValue = "id,asc") String[] sort) {
+    public ResponseEntity<Map<String, Object>> getAreas( Pageable pageable
+//            @RequestParam(defaultValue = "0") int page,
+//            @RequestParam(defaultValue = "4") int size,
+//            @RequestParam(defaultValue = "id,asc") String[] sort
+           ) {
         try {
-            List<Sort.Order> orders = new ArrayList<Sort.Order>();
-            if (sort[0].contains(",")) {
-                // will sort more than 2 fields
-                // sortOrder="field, direction"
-                for (String sortOrder : sort) {
-                    String[] _sort = sortOrder.split(",");
-                    orders.add(new Sort.Order(getSortDirection(_sort[1]), _sort[0]));
-                }
-            } else {
-                // sort=[field, direction]
-                orders.add(new Sort.Order(getSortDirection(sort[1]), sort[0]));
-            }
-
+//            List<Sort.Order> orders = new ArrayList<Sort.Order>();
+//            if (sort[0].contains(",")) {
+//                // will sort more than 2 fields
+//                // sortOrder="field, direction"
+//                for (String sortOrder : sort) {
+//                    String[] _sort = sortOrder.split(",");
+//                    orders.add(new Sort.Order(getSortDirection(_sort[1]), _sort[0]));
+//                }
+//            } else {
+//                // sort=[field, direction]
+//                orders.add(new Sort.Order(getSortDirection(sort[1]), sort[0]));
+//            }
+//
             List<Area> areas = new ArrayList<Area>();
-            Pageable pagingSort = PageRequest.of(page, size, Sort.by(orders));
+//            Pageable pagingSort = PageRequest.of(page, size, Sort.by(orders));
 
             Page<Area> pageTuts;
 
-            pageTuts = areaRepository.findAllInfo(pagingSort);
+            pageTuts = areaRepository.findAllInfo(pageable);
 
             areas = pageTuts.getContent();
 
