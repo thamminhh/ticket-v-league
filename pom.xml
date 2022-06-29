@@ -79,7 +79,11 @@
             <artifactId>jjwt</artifactId>
             <version>0.7.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <version>9.0.0</version>
+        </dependency>
 
     </dependencies>
     <packaging>jar</packaging>
