@@ -41,6 +41,7 @@ public class OrderService {
         Order existingOrder= repository.findById(order.getId()).orElse(null);
         existingOrder.setAccountId(order.getAccountId());
         existingOrder.setOrderDate(order.getOrderDate());
+        existingOrder.setTotal(order.getTotal());
         return repository.save(existingOrder);
     }
 }

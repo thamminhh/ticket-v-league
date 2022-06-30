@@ -18,4 +18,5 @@ public class Order {
     private int id;
     private Integer accountId;
     private String orderDate;
+    private double total;
 }

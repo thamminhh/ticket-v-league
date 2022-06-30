@@ -18,6 +18,9 @@ public class Ticket {
     private int id;
     private int matchId;
     private int areaId;
+    @ManyToOne( targetEntity = Area.class,cascade = CascadeType.ALL)
+    @JoinColumn(name ="areaId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Area area;
     private double price;
     private int amount;
 
