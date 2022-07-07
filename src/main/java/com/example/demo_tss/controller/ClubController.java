@@ -44,7 +44,7 @@ public class ClubController {
     public ResponseEntity<Map<String, Object>> getClubs(
             @RequestParam(required = false) String clubName,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "3") int size,
+            @RequestParam(defaultValue = "7") int size,
             @RequestParam(defaultValue = "id,desc") String[] sort) {
         try {
             List<Sort.Order> orders = new ArrayList<Sort.Order>();
