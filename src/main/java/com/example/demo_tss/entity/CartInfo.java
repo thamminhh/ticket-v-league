@@ -6,7 +6,7 @@ import java.util.List;
 public class CartInfo {
 
 
-    private int accountId;
+    private String userName;
 
     private String orderDate;
 
@@ -35,12 +35,12 @@ public class CartInfo {
     }
 
 
-    public int getAccountId() {
-        return accountId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public List<CartLineInfo> getCartLines() {

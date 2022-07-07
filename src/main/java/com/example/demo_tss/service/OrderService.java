@@ -24,12 +24,17 @@ public class OrderService {
     @Autowired
     private TicketService ticketService;
 
+    @Autowired
+    private AccountsService accountsServices;
+
     public void saveOrder(CartInfo cartInfo) {
         Order order = new Order();
 
-        order.setAccountId(cartInfo.getAccountId());
+        int accountId = accountsServices.getAccountIdByUsername(cartInfo.getUserName());
+        order.setAccountId(accountId);
         order.setTotal(cartInfo.getTotal());
         order.setOrderDate(cartInfo.getOrderDate());
+
 
         repository.save(order);
 
@@ -83,5 +88,9 @@ public class OrderService {
     public int getNewestOrderId(){
         int orderId = repository.getNewestOrderId();
         return orderId;
+    }
+
+    public void updateOrderStatus(int status, int orderId){
+        repository.updateOrderStatus(status, orderId);
     }
 }

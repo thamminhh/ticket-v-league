@@ -53,6 +53,9 @@ public class AccountsService {
     }
 
 
+    public int getAccountIdByUsername(String username){
+         return repository.getAccountIdByUsername(username);
+    }
 
 
 
