@@ -1,6 +1,8 @@
 package com.example.demo_tss.controller;
 
+import com.example.demo_tss.entity.CartInfo;
 import com.example.demo_tss.entity.Order;
+import com.example.demo_tss.repository.OrderRepository;
 import com.example.demo_tss.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +15,12 @@ public class OrderController {
     @Autowired
     private OrderService service;
 
+    @Autowired
+    private OrderRepository repository;
+
     @PostMapping()
-    public Order addOrder(@RequestBody Order order){
-        return service.saveOrder(order);
+    public void addOrder(@RequestBody CartInfo cartInfo){
+        service.saveOrder(cartInfo);
     }
     @GetMapping()
     public List<Order> findAllOrder(){
@@ -33,14 +38,21 @@ public class OrderController {
         return service.getOrderByAccountId(accountId);
     }
 
-    @PutMapping("")
-    public Order updateOrder(@RequestBody Order order){
-        return service.saveOrder(order);
-    }
+//    @PutMapping("")
+//    public Order updateOrder(@RequestBody Order order){
+//        return service.saveOrder(order);
+//    }
 
     @DeleteMapping("/{id}")
     public String deleteOrder(@PathVariable int id){
 
         return service.deleteOrder(id);
     }
+
+//    @GetMapping("/maxId")
+//    public int getOrderIdMax(){
+//        int orderId = repository.getNewestOrderId();
+//        System.out.println(orderId);
+//        return orderId;
+//    }
 }

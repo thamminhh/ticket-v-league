@@ -1,6 +1,10 @@
 package com.example.demo_tss.service;
 
+import com.example.demo_tss.entity.CartInfo;
+import com.example.demo_tss.entity.CartLineInfo;
 import com.example.demo_tss.entity.Order;
+import com.example.demo_tss.entity.OrderDetail;
+import com.example.demo_tss.repository.OrderDetailRepository;
 import com.example.demo_tss.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +18,40 @@ import java.util.List;
 public class OrderService {
     @Autowired
     private OrderRepository repository;
+    @Autowired
+    private OrderDetailRepository orderDetailRepository;
 
-    public Order saveOrder(Order order){
-        return repository.save(order);
+    @Autowired
+    private TicketService ticketService;
+
+    public void saveOrder(CartInfo cartInfo) {
+        Order order = new Order();
+
+        order.setAccountId(cartInfo.getAccountId());
+        order.setTotal(cartInfo.getTotal());
+        order.setOrderDate(cartInfo.getOrderDate());
+
+        repository.save(order);
+
+        int orderId = getNewestOrderId();
+
+        List<CartLineInfo> lines = cartInfo.getCartLines();
+
+        for (CartLineInfo line : lines
+        ) {
+            int ticketId = line.getTicketId();
+            int quantity = line.getQuantity();
+            int ticketAmount = ticketService.getAmountByTicketId(ticketId);
+            int newAmount = ticketAmount - quantity;
+            if (newAmount >= 0) {
+                ticketService.updateAmountTicketId(newAmount,ticketId);
+                OrderDetail detail = new OrderDetail();
+                detail.setOrderId(orderId);
+                detail.setTicketId(ticketId);
+                detail.setQuantity(quantity);
+                orderDetailRepository.save(detail);
+            }
+        }
     }
 
     public List<Order> saveOrder(List<Order> order){
@@ -43,5 +78,10 @@ public class OrderService {
         existingOrder.setOrderDate(order.getOrderDate());
         existingOrder.setTotal(order.getTotal());
         return repository.save(existingOrder);
+    }
+
+    public int getNewestOrderId(){
+        int orderId = repository.getNewestOrderId();
+        return orderId;
     }
 }

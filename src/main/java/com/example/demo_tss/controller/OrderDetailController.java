@@ -5,6 +5,7 @@ package com.example.demo_tss.controller;
 import com.example.demo_tss.entity.OrderDetail;
 import com.example.demo_tss.service.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,8 @@ public class OrderDetailController {
     private OrderDetailService service;
 
     @PostMapping()
-    public OrderDetail addOrder(@RequestBody OrderDetail orderDetail){
+    public List<OrderDetail> addOrder(@RequestBody List<OrderDetail> orderDetail){
+
         return service.saveOrderDetail(orderDetail);
     }
     @GetMapping()
@@ -46,4 +48,5 @@ public class OrderDetailController {
 
         return service.deleteOrderDetail(id);
     }
+
 }

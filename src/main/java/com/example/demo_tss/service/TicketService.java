@@ -50,4 +50,13 @@ public class TicketService {
         existingTicket.setAmount(ticket.getAmount());
         return repository.save(existingTicket);
     }
+
+    public int getAmountByTicketId(int ticketId){
+        int amount = repository.getAmountByTicketId(ticketId);
+        return amount;
+    }
+
+    public void updateAmountTicketId(int newAmount, int ticketId){
+         repository.updateAmountTicketId(newAmount, ticketId);
+    }
 }
