@@ -17,6 +17,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Integer accountId;
+    @ManyToOne( targetEntity = Accounts.class,cascade = CascadeType.ALL)
+    @JoinColumn(name ="accountId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Accounts account;
     private String orderDate;
     private double total;
+    private int status;
 }

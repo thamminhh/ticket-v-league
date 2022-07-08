@@ -18,14 +18,14 @@ public class MomoController {
     private OrderService orderService;
 
     @PostMapping("/momo")
-    public boolean getMomoResponse(@RequestBody MoMoResponse moMoResponse){
+    public void getMomoResponse(@RequestBody MoMoResponse moMoResponse){
+
         int orderId = moMoResponse.getOrderId();
         int resultCode = moMoResponse.getResultCode();
 
         if(resultCode == 0){
-           return true;
-        }else
-            return false;
+            orderService.updateOrderStatus(resultCode, orderId);
+        }
     }
 
 

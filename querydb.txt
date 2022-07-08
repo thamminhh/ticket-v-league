@@ -1,0 +1,524 @@
+create database Ticket_Systems_Sellings;
+
+
+CREATE TABLE roles (
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    rolename nvarchar(25)
+);
+
+INSERT INTO roles (rolename) VALUES
+('admin');
+
+INSERT INTO roles (rolename) VALUES
+('user');
+
+CREATE TABLE accounts (
+     id int NOT NULL AUTO_INCREMENT,
+     PRIMARY KEY (id),
+     firstname CHAR(30) NOT NULL,
+     lastname varchar(50) NULL,
+     username nvarchar(255),
+     password char(68),
+     phone char(11),
+     role_id int,
+     FOREIGN KEY (role_id) REFERENCES roles(id)
+);
+
+create table devideToken(
+	id int NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY (id),
+	accountId int,
+	FOREIGN KEY (accountId) REFERENCES accounts(id),
+	token nvarchar(255)
+);
+
+insert into accounts (firstname, lastname, username, password, phone, role_id) values
+	('minh', 'tham quang', 'minhtqse130067@fpt.edu.vn', '12345678', '0941876405', '1');
+    
+insert into accounts (firstname, lastname, username, password, phone, role_id) values
+	('minh', 'tham quang', 'thamminh512@gmail.com', '12345678', '0941876405', '2');
+
+
+CREATE TABLE tournament(
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    tournamentName nvarchar(50),
+    startDate date,
+    endDate date,
+    status BOOLEAN not null
+ );
+
+ CREATE TABLE round(
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    tournamentId int,
+    FOREIGN KEY (tournamentId) REFERENCES tournament(id),
+    roundName nvarchar(25),
+    startDate date,
+    endDate date,
+    status BOOLEAN not null
+ );
+
+
+CREATE TABLE stadium(
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    stadiumName nvarchar(50),
+    location nvarchar(255),
+    capacity int,
+    img nvarchar(255)
+ );
+ 
+ 
+
+ CREATE TABLE area (
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    stadiumId int,
+    FOREIGN KEY (stadiumId) REFERENCES stadium(id),
+    areaName char(10),
+    capacity int,
+    ticketTypeId int,
+    FOREIGN KEY (ticketTypeId) REFERENCES ticketType(id)
+ );
+ 
+
+
+ CREATE TABLE club (
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    stadiumId int null,
+    FOREIGN KEY (stadiumId) REFERENCES stadium(id),
+    clubName nvarchar(100),
+    img nvarchar(255),
+    country nvarchar(25)
+ );
+
+ 
+ CREATE TABLE matches (
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    roundId int,
+    FOREIGN KEY (roundId) REFERENCES round(id),
+    stadiumId int,
+	FOREIGN KEY (stadiumId) REFERENCES stadium(id),
+    clubHomeId int, 
+    FOREIGN KEY (clubHomeId) REFERENCES club(id),
+    clubVisitorId int,
+    FOREIGN KEY (clubVisitorId) REFERENCES club(id),
+    timeStart datetime,
+    status BOOLEAN not null
+ );
+ 
+
+ CREATE TABLE systemTicketType (
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    systemTicketTypeName nvarchar(25)
+ );
+
+
+CREATE TABLE ticket (
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    matchId int,
+    FOREIGN KEY (matchId) REFERENCES matches(id),
+    areaId int,
+    FOREIGN KEY (areaId) REFERENCES area(id),
+    price double,
+    amount int
+ );
+ 
+ CREATE TABLE paymentMethod (
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    paymentMethodName nvarchar(25)
+ );
+ 
+ CREATE TABLE orders (
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    accountId int,
+    FOREIGN KEY (accountId) REFERENCES accounts(id),
+    orderDate datetime,
+    status int
+ );
+ 
+  CREATE TABLE orderDetail (
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    orderId int,
+    FOREIGN KEY (orderId) REFERENCES orders(id),
+    ticketId int,
+    FOREIGN KEY (ticketId) REFERENCES ticket(id),
+    quantity int
+ );
+ 
+
+  CREATE TABLE invoice (
+	id int NOT NULL AUTO_INCREMENT,
+    primary key(id),
+    orderDetailId int,
+    FOREIGN KEY (orderDetailId) REFERENCES orderDetail(id),
+    accountId int,
+    FOREIGN KEY (accountId) REFERENCES accounts(id),
+	phone nvarchar(25),
+    total double,
+    status nvarchar(25),
+    currentDate datetime,
+    paymentMethodId int,
+	FOREIGN KEY (paymentMethodId) REFERENCES paymentMethod(id)
+ );
+
+	
+ insert into paymentMethod(paymentMethodName) value
+ ('Momo');
+ 
+  insert into paymentMethod(paymentMethodName) value
+ ('Cash');
+ 
+insert into systemTicketType(systemTicketTypeName) values
+	('Seasonal');
+    
+insert into systemTicketType(systemTicketTypeName) values
+	('Retail');
+    
+insert into tournament(tournamentName, startDate, endDate, status) VALUES
+	('V-League 2022','2022-02-12','2022-11-13','1');
+
+insert into tournament(tournamentName, startDate, endDate, status) VALUES
+	('V-League 2021','2021-03-05','2021-10-30','0');
+    
+
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 1', '2022-01-15', '2022-01-17','1');
+
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 2', '2022-01-22', '2022-01-24','1');
+
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 3', '2022-01-30', '2022-03-14','1');
+
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 4','2022-03-18', '2022-03-20','1');
+    
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 5','2022-03-23', '2022-03-24','1');
+    
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 6','2022-03-28', '2022-03-29','1');
+    
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 7','2022-04-02', '2022-04-04','1');
+    
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 8','2022-04-07', '2022-04-08','1');
+
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 9','2022-04-11', '2022-04-12','1');
+    
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 10','2022-04-16', '2022-04-18','1');
+
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 11','2022-04-27', '2022-04-28','1');
+    
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 12','2022-05-02', '2022-05-02', '1');
+    
+ insert into round(tournamentId, roundName, startDate, endDate, status) value
+	('1', 'round 13','2022-05-09', '2022-05-09', '1');
+    
+
+ insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân vận động Gò Đậu',' góc đường 30 Tháng 4 và Đại lộ Bình Dương (trung tâm TP. Thủ Dầu Một, tỉnh Bình Dương)','18250','https://vi.wikipedia.org/wiki/Sân_vận_động_Gò_Đậu#/media/Tập_tin:SVĐ_Gò_Đậu.JPG');
+ 
+ insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân vận động Hòa Xuân','X6XF+M58, Dương Loan, Hoà Xuân, Cẩm Lệ, Đà Nẵng 550000','20500','https://vi.wikipedia.org/wiki/Sân_vận_động_Hòa_Xuân#/media/Tập_tin:Sân_vận_Động_Hòa_Xuân_.jpg');
+
+insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân vận động Hàng Đẫy (Hang Day Stadium)','Số 9 phố Trịnh Hoài Đức, phường Cát Linh, quận Đống Đa Hà Nội, Việt Nam','20500','https://vi.wikipedia.org/wiki/Sân_vận_động_Hàng_Đẫy#/media/Tập_tin:Hang_Day.jpg');
+
+insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân vận động Plei Cu (Pleiku Stadium)','X2H3+HWX, Quang Trung, P.Tây Sơn, Thành phố Pleiku, Gia Lai 600000','5000','https://vi.wikipedia.org/wiki/Sân_vận_động_Pleiku#/media/Tập_tin:Pleiku_stadium.jpg');
+
+insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân vận động Vinh (Vinh Stadium)','MM99+GRV, Đào Tấn, Cửa Nam, Thành phố Vinh, Nghệ An','18000','https://vi.wikipedia.org/wiki/Sân_vận_động_Vinh#/media/Tập_tin:Sân_vận_động_Vinh_8.JPG');
+
+insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân vận động Thanh Hóa','37 Lê Quý Đôn, P. Ba Đình, Thành phố Thanh Hóa, Thanh Hoá','14000','https://vi.wikipedia.org/wiki/Sân_vận_động_Thanh_Hóa#/media/Tập_tin:San-thanh-hoa-thay-da-doi-thit-truoc-them-flc-cup-2016.jpg');
+
+insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân vận động Quy Nhơn (Qui Nhon Stadium)','194 Lê Hồng Phong, Trần Hưng Đạo, Thành phố Qui Nhơn, Bình Định','20000','https://vi.wikipedia.org/wiki/Sân_vận_động_Quy_Nhơn#/media/Tập_tin:Quy_Nhon_Stadium.jpg');
+
+insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân vận động tỉnh Hà Tĩnh','8WM5+74G, Nguyễn Biểu, Nam Hà, Hà Tĩnh','15000','https://www.google.com/maps/uv?pb=!1s0x31384e3b1b0a9299%3A0xcaf284a628a6638!3m1!7e115!4shttps%3A%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPQlqU-j3cCbeW-wm0kAz1GmsgtDB_BBCdEXHOA%3Dw325-h218-n-k-no!5zU8OibiBW4bqtbiDEkeG7mW5nIHRpzIluaCBIYcyAIFRpzINuaCDEkeG7i2EgY2jhu4kgLSBHb29nbGUgU2VhcmNo!15sCgIgAQ&imagekey=!1e10!2sAF1QipPQlqU-j3cCbeW-wm0kAz1GmsgtDB_BBCdEXHOA&hl=en');
+
+insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân Vận động Cẩm Phả','109 Võ Huy Tâm, Cẩm Thành, Cẩm Phả, Quảng Ninh','16000','https://www.google.com/search?q=svd+Cẩm+Phả+địa+chỉ&client=opera&hs=Irk&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjtmtrqrbr4AhU_4HMBHSihAR4Q_AUoAnoECAIQBA&biw=1496&bih=723&dpr=1.25#imgrc=PshnPe8TptERNM');
+
+insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân vận động Thống Nhất','138 Đào Duy Từ, Phường 6, Quận 10, Thành phố Hồ Chí Minh','15000','https://en.wikipedia.org/wiki/Th%E1%BB%91ng_Nh%E1%BA%A5t_Stadium#/media/File:Th%E1%BB%91ng_Nh%E1%BA%A5t_Stadium_2022.jpg');
+
+insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân vận động Thiên Trường','5 Đặng Xuân Thiều, Phường Vị Hoàng, Thành phố Nam Định, Nam Định','30000','https://en.wikipedia.org/wiki/Thi%C3%AAn_Tr%C6%B0%E1%BB%9Dng_Stadium#/media/File:SV%C4%90_Thi%C3%AAn_Tr%C6%B0%E1%BB%9Dng_ng%C3%A0y_17_th%C3%A1ng_8.jpg');
+
+insert into stadium (stadiumName, location, capacity, img) value
+ ('Sân vận động Lạch Trây','15 Lạch Tray, Ngô Quyền, Hải Phòng','17000','https://en.wikipedia.org/wiki/L%E1%BA%A1ch_Tray_Stadium#/media/File:SVDLT.jpg');
+
+
+insert into area (stadiumId, areaName, capacity)
+	values ('1', 'A', '4500');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('1', 'B', '4500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('1', 'C', '4500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('1', 'D', '4500');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('2', 'A', '5000');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('2', 'B', '5000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('2', 'C', '5000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('2', 'D', '5000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('3', 'A', '5500');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('3', 'B', '5500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('3', 'C', '5500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('3', 'D', '5500');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('4', 'A', '300');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('4', 'B', '300');
+    
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('4', 'C', '300');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('4', 'D', '300');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('5', 'A', '7000');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('5', 'B', '6000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('5', 'C', '2500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('5', 'D', '2500');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('6', 'A', '7000');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('6', 'B', '7000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('7', 'A1', '1500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('7', 'A2', '1500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('7', 'A3', '1500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('7', 'A4', '1500');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('7', 'B', '6000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('7', 'C', '4000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('7', 'D', '4000');
+    
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('8', 'A', '2500');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('8', 'B', '2500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('8', 'C', '2500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('8', 'D', '2500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('9', 'A', '4000');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('9', 'B', '4000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('9', 'C', '4000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('9', 'D', '4000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('10', 'A1', '800');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('10', 'A2', '800');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('10', 'A3', '800');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('10', 'A4', '800');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('10', 'A5', '800');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('10', 'B', '5000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('10', 'C', '8000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('10', 'D', '8000');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('11', 'A', '10000');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('11', 'B', '10000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('11', 'C', '5000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('11', 'D', '5000');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('12', 'A', '15000');
+
+insert into area (stadiumId, areaName, capacity)
+	values ('12', 'B', '10000');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('12', 'C', '2500');
+    
+insert into area (stadiumId, areaName, capacity)
+	values ('12', 'D', '2500');
+
+
+insert into club (stadiumId, clubName, img, country) values
+	('1', 'Becamex Bình Dương', 'https://vi.wikipedia.org/wiki/Tập_tin:Logo_Becamex_Bình_Dương_2021.png', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('2', 'SHB Đà Nẵng', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_SHB_Đà_Nẵng#/media/Tập_tin:CLB_SHB_Đà_Nẵng.svg', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('3', 'Hà Nội FC', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Hà_Nội_(2016)#/media/Tập_tin:Hà_Nội_FC_2020.svg', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('12','Hải Phòng FC', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Hải_Phòng#/media/Tập_tin:Hải_Phòng_FC_2021.svg', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('10', 'HCM FC', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Thành_phố_Hồ_Chí_Minh#/media/Tập_tin:Hcmcfc-logo.png', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('4', 'HAGL', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Hoàng_Anh_Gia_Lai#/media/Tập_tin:Hoàng_Anh_Gia_Lai_FC.svg', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('11', 'Nam Định FC', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Nam_Định#/media/Tập_tin:Nam_Định_FC_logo.svg', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('10', 'Sài Gòn FC', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Sài_Gòn#/media/Tập_tin:Sai_Gon_FC.svg', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('5', 'SLNA FC', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Sông_Lam_Nghệ_An#/media/Tập_tin:New_logo_slna.png', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('6', 'Đông Á Thanh Hóa', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Đông_Á_Thanh_Hóa#/media/Tập_tin:Logo_Đông_Á_Thanh_Hóa.png', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('3','Viettel FC', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Viettel#/media/Tập_tin:Viettel_FC_2021.svg', 'Việt Nam');
+    
+insert into club (stadiumId, clubName, img, country) values
+	('7', 'Topenlane Bình Định FC', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Topenland_Bình_Định#/media/Tập_tin:Binh_Dinh_FC_logo.svg', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('8', 'Hồng Lĩnh Hà Tĩnh FC', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Hồng_Lĩnh_Hà_Tĩnh#/media/Tập_tin:HLHT_FC.svg', 'Việt Nam');
+
+insert into club (stadiumId, clubName, img, country) values
+	('9', 'Than Quảng Ninh', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Than_Quảng_Ninh#/media/Tập_tin:Logo_CLB_Than_Quảng_Ninh.svg', 'Việt Nam');
+
+insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
+	('1','6','7','3','2022-01-15', '1');
+
+insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
+	('1','5','9','12','2022-01-16','1');
+    
+insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
+	('1','1','1','10','2022-01-16','1');
+    
+insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart,status) value
+	('1','12','11','4','2022-01-16', '1');
+    
+insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
+	('1','2','2','5','2022-01-17','1');
+    
+insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
+	('1','8','13','14','2022-01-17', '1');
+
+insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
+	('1','10','8','6','2022-01-17', '1');
+    
+insert into ticket( matchId, areaId, price, amount) values
+	('1', '21', '4000000', '200');
+insert into ticket( matchId, areaId, price, amount) values
+	('1', '22', '3000000', '100');
+    
+insert into ticket( matchId, areaId, price, amount) values
+	('2', '17', '10000', '100');
+insert into ticket( matchId, areaId, price, amount) values
+	('2', '18', '20000', '100');
+insert into ticket( matchId, areaId, price, amount) values
+	('2', '19', '30000', '200');
+insert into ticket( matchId, areaId, price, amount) values
+	('2', '20', '40000', '200');
+insert into ticket( matchId, areaId, price, amount) values
+	('3', '1', '10000', '100');
+insert into ticket( matchId, areaId, price, amount) values
+	('3', '2', '20000', '100');
+insert into ticket( matchId, areaId, price, amount) values
+	('3', '3', '30000', '200');
+insert into ticket( matchId, areaId, price, amount) values
+	('3', '4', '40000', '200');
+insert into ticket( matchId, areaId, price, amount) values
+	('4', '50', '10000', '100');
+insert into ticket( matchId, areaId, price, amount) values
+	('4', '51', '20000', '100');
+insert into ticket( matchId, areaId, price, amount) values
+	('4', '52', '30000', '200');
+insert into ticket( matchId, areaId, price, amount) values
+	('4', '53', '40000', '200');

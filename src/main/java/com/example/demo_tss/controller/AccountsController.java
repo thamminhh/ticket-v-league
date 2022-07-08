@@ -41,6 +41,7 @@ public class AccountsController {
 
         return service.saveAccount(accounts);
     }
+    @CrossOrigin(origins = "http://localhost:8081")
     @GetMapping (produces = "application/json; charset=utf-8")
     public ResponseEntity<Map<String, Object>> getAccounts(
             @RequestParam(required = false) String firstname,
