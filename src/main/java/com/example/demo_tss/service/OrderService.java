@@ -29,12 +29,13 @@ public class OrderService {
 
     public void saveOrder(CartInfo cartInfo) {
         Order order = new Order();
+        int defaultStatus = 1;
 
         int accountId = accountsServices.getAccountIdByUsername(cartInfo.getUserName());
         order.setAccountId(accountId);
         order.setTotal(cartInfo.getTotal());
         order.setOrderDate(cartInfo.getOrderDate());
-
+        order.setStatus(defaultStatus);
 
         repository.save(order);
 
