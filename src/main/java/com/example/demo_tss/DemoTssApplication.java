@@ -7,9 +7,11 @@ import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
+import com.google.firebase.messaging.FirebaseMessaging;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
@@ -21,7 +23,16 @@ import java.io.IOException;
 @EnableSwagger2
 public class DemoTssApplication {
 
-    public static void main(String[] args) throws IOException, FirebaseAuthException {
+    @Bean
+    FirebaseMessaging firebaseMessaging() throws IOException {
+        FileInputStream initialFirebaseFile = new FileInputStream("src/main/resources/service-account-file.json");
+        FirebaseOptions options = FirebaseOptions.builder().setCredentials(GoogleCredentials.fromStream(initialFirebaseFile)).build();
+        if (FirebaseApp.getApps().isEmpty()) {
+           FirebaseApp app = FirebaseApp.initializeApp(options, "my-app");
+        }
+        return FirebaseMessaging.getInstance(FirebaseApp.initializeApp(options, "my-app"));
+    }
+    public static void main(String[] args) throws IOException {
 
 //        FileInputStream initialFirebaseFile = new FileInputStream("src/main/resources/service-account-file.json");
 //        FirebaseOptions options = FirebaseOptions.builder().setCredentials(GoogleCredentials.fromStream(initialFirebaseFile)).build();
