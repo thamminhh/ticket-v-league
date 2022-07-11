@@ -2,6 +2,8 @@ package com.example.demo_tss.service;
 
 import com.example.demo_tss.entity.Accounts;
 import com.example.demo_tss.repository.AccountsRepository;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,7 +58,6 @@ public class AccountsService {
     public int getAccountIdByUsername(String username){
          return repository.getAccountIdByUsername(username);
     }
-
 
 
 }

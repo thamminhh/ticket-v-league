@@ -67,6 +67,7 @@
             <version>2.9.2</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -79,6 +80,7 @@
             <artifactId>jjwt</artifactId>
             <version>0.7.0</version>
         </dependency>
+
         <dependency>
             <groupId>com.google.firebase</groupId>
             <artifactId>firebase-admin</artifactId>
@@ -86,7 +88,9 @@
         </dependency>
 
     </dependencies>
+
     <packaging>jar</packaging>
+
     <build>
         <plugins>
             <plugin>

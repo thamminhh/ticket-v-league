@@ -133,9 +133,9 @@ public class OrderController {
     }
 
 
-    @GetMapping("accountId/{accountId}")
-    public List <Order> findOrderByAccountId(@PathVariable int accountId){
-        return service.getOrderByAccountId(accountId);
+    @GetMapping("username/{username}")
+    public List <Order> findOrderByAccountId(@PathVariable String username){
+        return service.getOrderByUsername(username);
     }
 
 //    @PutMapping("")

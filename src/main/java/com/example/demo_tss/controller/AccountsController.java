@@ -3,6 +3,9 @@ package com.example.demo_tss.controller;
 import com.example.demo_tss.entity.Accounts;
 import com.example.demo_tss.repository.AccountsRepository;
 import com.example.demo_tss.service.AccountsService;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,12 +39,21 @@ public class AccountsController {
         return Sort.Direction.ASC;
     }
 
+    @PostMapping("/login")
+    public void checkLogin(String token) throws FirebaseAuthException {
+        FirebaseToken decoded = FirebaseAuth.getInstance().verifyIdToken(token);
+        String userName = decoded.getName();
+        System.out.println("USERNAME: " + userName);
+
+    }
+
     @PostMapping
     public Accounts addAccount(@RequestBody Accounts accounts){
 
         return service.saveAccount(accounts);
     }
-    @CrossOrigin(origins = "http://localhost:8081")
+
+
     @GetMapping (produces = "application/json; charset=utf-8")
     public ResponseEntity<Map<String, Object>> getAccounts(
             @RequestParam(required = false) String firstname,
@@ -106,6 +118,8 @@ public class AccountsController {
 
         return service.deleteAccounts(id);
     }
+
+
 
 
 }

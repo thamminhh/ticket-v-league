@@ -27,7 +27,8 @@ public class OrderService {
     @Autowired
     private AccountsService accountsServices;
 
-    public void saveOrder(CartInfo cartInfo) {
+    public String saveOrder(CartInfo cartInfo) {
+        String message = "Sucess order";
         Order order = new Order();
         int defaultStatus = 1;
 
@@ -49,7 +50,11 @@ public class OrderService {
             int quantity = line.getQuantity();
             int ticketAmount = ticketService.getAmountByTicketId(ticketId);
             int newAmount = ticketAmount - quantity;
-            if (newAmount >= 0) {
+            System.out.println(newAmount);
+            if(newAmount < 0 ){
+                return message = "Out of ticket";
+            }
+            else {
                 ticketService.updateAmountTicketId(newAmount,ticketId);
                 OrderDetail detail = new OrderDetail();
                 detail.setOrderId(orderId);
@@ -58,6 +63,7 @@ public class OrderService {
                 orderDetailRepository.save(detail);
             }
         }
+        return message;
     }
 
     public List<Order> saveOrder(List<Order> order){
@@ -69,8 +75,8 @@ public class OrderService {
     public Order getOrderByID(int id){
         return repository.findById(id).orElse(null);
     }
-    public List<Order> getOrderByAccountId(int accountId){
-
+    public List<Order> getOrderByUsername (String username){
+        int accountId = accountsServices.getAccountIdByUsername(username);
         return repository.findByAccountId(accountId);
     }
 
