@@ -107,7 +107,7 @@
                     <resourceGroup>rg-ticket-vleague</resourceGroup>
                     <appName>tsvleague</appName>
                     <pricingTier>F1</pricingTier>
-                    <region>centralus</region>
+                    <region>Central US</region>
                     <runtime>
                         <os>Linux</os>
                         <javaVersion>Java 11</javaVersion>
