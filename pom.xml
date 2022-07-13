@@ -106,7 +106,7 @@
                     <subscriptionId>1f01fe6a-ef7c-4fa9-817f-88ea35a4ae09</subscriptionId>
                     <resourceGroup>rg-mysql</resourceGroup>
                     <appName>ticketsss</appName>
-                    <pricingTier>F1</pricingTier>
+                    <pricingTier>P1v2</pricingTier>
                     <region>centralus</region>
                     <runtime>
                         <os>Linux</os>
