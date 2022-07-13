@@ -103,10 +103,10 @@
                 <version>1.14.0</version>
                 <configuration>
                     <schemaVersion>v2</schemaVersion>
-                    <subscriptionId>1f01fe6a-ef7c-4fa9-817f-88ea35a4ae09</subscriptionId>
-                    <resourceGroup>rg-mysql</resourceGroup>
-                    <appName>ticketsss</appName>
-                    <pricingTier>P1v2</pricingTier>
+                    <subscriptionId>eda14459-d0bc-4630-83c2-dee8c5e86aea</subscriptionId>
+                    <resourceGroup>rg-ticket-vleague</resourceGroup>
+                    <appName>ticketss</appName>
+                    <pricingTier>F1</pricingTier>
                     <region>centralus</region>
                     <runtime>
                         <os>Linux</os>
