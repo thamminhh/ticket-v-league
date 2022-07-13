@@ -105,11 +105,11 @@
                     <schemaVersion>v2</schemaVersion>
                     <subscriptionId>eda14459-d0bc-4630-83c2-dee8c5e86aea</subscriptionId>
                     <resourceGroup>rg-ticket-vleague</resourceGroup>
-                    <appName>ticketselling</appName>
-                    <pricingTier>S1</pricingTier>
+                    <appName>tsvleague</appName>
+                    <pricingTier>F1</pricingTier>
                     <region>centralus</region>
                     <runtime>
-                        <os>Window</os>
+                        <os>Linux</os>
                         <javaVersion>Java 11</javaVersion>
                         <webContainer>Java SE</webContainer>
                     </runtime>
