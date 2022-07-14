@@ -457,7 +457,7 @@ insert into club (stadiumId, clubName, img, country) values
 	('5', 'SLNA FC', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Sông_Lam_Nghệ_An#/media/Tập_tin:New_logo_slna.png', 'Việt Nam');
 
 insert into club (stadiumId, clubName, img, country) values
-	('6', 'Đông Á Thanh Hóa', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Đông_Á_Thanh_Hóa#/media/Tập_tin:Logo_Đông_Á_Thanh_Hóa.png', 'Việt Nam');
+	('6', 'Đông Á Thanh Hóa', 'https://haitrieu.com/blogs/vector-logo-clb-bong-da-dong-a-thanh-hoa/?fbclid=IwAR1H_hb0yC3L0N5cMnyGTMxuomW463ohrxp7634R7stQPt6wO8N9NeQ0lRs', 'Việt Nam');
 
 insert into club (stadiumId, clubName, img, country) values
 	('3','Viettel FC', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Viettel#/media/Tập_tin:Viettel_FC_2021.svg', 'Việt Nam');
@@ -472,30 +472,30 @@ insert into club (stadiumId, clubName, img, country) values
 	('9', 'Than Quảng Ninh', 'https://vi.wikipedia.org/wiki/Câu_lạc_bộ_bóng_đá_Than_Quảng_Ninh#/media/Tập_tin:Logo_CLB_Than_Quảng_Ninh.svg', 'Việt Nam');
 
 insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
-	('1','6','7','3','2022-01-15', '1');
+	('1','6','7','3','2022-01-15 18:00:00', '1');
 
 insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
-	('1','5','9','12','2022-01-16','1');
+	('1','5','9','12','2022-01-16 17:00:00','1');
     
 insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
-	('1','1','1','10','2022-01-16','1');
-    
-insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart,status) value
-	('1','12','11','4','2022-01-16', '1');
+	('1','1','1','10','2022-01-16 19:15:00','1');
     
 insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
-	('1','2','2','5','2022-01-17','1');
+	('1','12','11','4','2022-01-16 18:00:00', '1');
     
 insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
-	('1','8','13','14','2022-01-17', '1');
+	('1','2','2','5','2022-01-17 19:00:00','1');
+    
+insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
+	('1','8','13','14','2022-01-17 17:00:00', '1');
 
 insert into matches (roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) value
-	('1','10','8','6','2022-01-17', '1');
+	('1','10','8','6','2022-01-17 19:15:00', '1');
     
 insert into ticket( matchId, areaId, price, amount) values
-	('1', '21', '4000000', '200');
+	('1', '21', '40000', '200');
 insert into ticket( matchId, areaId, price, amount) values
-	('1', '22', '3000000', '100');
+	('1', '22', '30000', '100');
     
 insert into ticket( matchId, areaId, price, amount) values
 	('2', '17', '10000', '100');
@@ -521,3 +521,117 @@ insert into ticket( matchId, areaId, price, amount) values
 	('4', '52', '30000', '200');
 insert into ticket( matchId, areaId, price, amount) values
 	('4', '53', '40000', '200');
+insert into ticket(matchId, areaId, price, amount) values 
+	('5', '5', '40000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('5', '6', '30000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('5', '7', '20000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('5', '8', '10000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('6', '30', '40000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('6', '31', '30000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('6', '32', '20000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('6', '33', '10000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('7', '38', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('7', '39', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('7', '40', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('7', '41', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('7', '42', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('7', '43', '30000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('7', '44', '20000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('7', '45', '10000', '100' );
+insert into matches(roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) values 
+	('2', '4', '6', '9','2022-01-22 17:00:00','1' );
+insert into matches(roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) values 
+	('2', '7', '12', '8','2022-01-23 17:00:00','1' );
+insert into matches(roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) values 
+	('2', '12', '4', '7','2022-01-22 17:00:00','1' );
+insert into matches(roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) values 
+	('2', '3', '3', '1','2022-01-23 19:15:00','1' );
+insert into matches(roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) values 
+	('2', '6', '10', '11','2022-01-24 17:00:00','1' );
+insert into matches(roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) values 
+	('2', '9', '14', '2','2022-01-24 18:00:00','1' );
+insert into matches(roundId, stadiumId, clubHomeId, clubVisitorId, timeStart, status) values 
+	('2', '10', '5', '13','2022-01-24 19:15:00','1' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('8', '13', '40000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('8', '14', '30000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('8', '15', '20000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('8', '16', '10000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('9', '23', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('9', '24', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('9', '25', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('9', '26', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('9', '27', '30000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('9', '28', '20000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('9', '29', '10000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('10', '50', '40000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('10', '51', '30000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('10', '52', '20000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('10', '53', '10000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('11', '9', '40000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('11', '10', '30000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('11', '11', '20000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('11', '12', '10000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('12', '21', '40000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('12', '22', '30000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('13', '34', '40000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('13', '35', '30000', '200' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('13', '36', '20000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('13', '37', '10000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('14', '38', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('14', '39', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('14', '40', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('14', '41', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('14', '42', '50000', '50' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('14', '43', '20000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('14', '44', '20000', '100' );
+insert into ticket(matchId, areaId, price, amount) values 
+	('14', '45', '10000', '100' );
+
+
