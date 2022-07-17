@@ -4,19 +4,13 @@ public class MoMoResponse {
 
     private String partnerCode;
     private int orderId;
-
     private String requestId;
-
     private Long amount;
-
     private String partnerUserId;
-
     private String orderInfo;
     private String orderType;
     private Long transId;
-
     private int resultCode;
-
     private String payType;
     private Long responseTime;
     private String extraData;
