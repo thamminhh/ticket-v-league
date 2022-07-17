@@ -29,4 +29,6 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
                     "inner join club c1 on m.clubVisitorId = c1.id where m.status = '1' order by m.id;",
             nativeQuery = true)
     Page<Match> findAllInfo(Pageable pagingSort);
+
+    List<Match> findByRoundId(int roundId);
 }

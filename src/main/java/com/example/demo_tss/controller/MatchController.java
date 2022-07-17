@@ -96,6 +96,10 @@ public class MatchController {
     public List <Match> findMatchByStadiumId(@PathVariable int stadiumId){
         return service.getMatchByStadiumId(stadiumId);
     }
+    @GetMapping("roundId/{roundId}")
+    public List <Match> findMatchByRoundId(@PathVariable int roundId){
+        return service.getMatchByRoundId(roundId);
+    }
     @GetMapping("clubHomeId/{clubHomeId}")
     public List <Match> findMatchByClubHomeId(@PathVariable int clubHomeId){
         return service.getMatchByClubHomeId(clubHomeId);

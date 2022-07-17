@@ -32,6 +32,10 @@ public class MatchService {
 
         return repository.findByStadiumId(stadiumId);
     }
+    public List<Match> getMatchByRoundId(int roundId){
+
+        return repository.findByRoundId(roundId);
+    }
     public List<Match> getMatchByClubHomeId(int clubHomeId){
 
         return repository.findByClubHomeId(clubHomeId);
