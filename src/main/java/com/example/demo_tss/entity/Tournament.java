@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -20,5 +21,9 @@ public class Tournament {
     private String startDate;
     private String endDate;
     private boolean status;
+//    @OneToMany(targetEntity = Round.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name ="tournamentId", referencedColumnName = "id")
+////    @JsonIgnore
+//    private List<Round> rounds;
 
 }
