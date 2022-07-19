@@ -28,7 +28,7 @@ public class OrderService {
     private AccountsService accountsServices;
 
     public String saveOrder(CartInfo cartInfo) {
-        String message = "Sucess order";
+        String message = "Success order";
         Order order = new Order();
         int defaultStatus = 1;
 
