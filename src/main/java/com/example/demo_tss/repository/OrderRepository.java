@@ -29,9 +29,13 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
             nativeQuery = true)
     Page<Order> findOrderedInfo(Pageable pagingSort);
 
-    @Query(value = "select  o.id, o.accountId, a.id, a.firstname, a.lastname, a.username, a.phone, o.orderDate, o.total, o.status \n" +
-            "from orders o inner join accounts a on o.accountId = a.id ",
-            countQuery = "select count(*) from orders o inner join accounts a on o.accountId = a.id order by o.id;",
+    @Query(value = "\n" +
+            "select  o.id, o.accountId, a.id, a.firstname, a.lastname, a.username, a.phone, o.orderDate, o.total, o.status,\n" +
+            "od.id, od.orderId, od.ticketId, od.quantity\n" +
+            "from orders o inner join accounts a on o.accountId = a.id \n" +
+            "inner join orderDetail od on o.id = od.orderId",
+            countQuery = "select count(*) from orders o inner join accounts a on o.accountId = a.id +\n" +
+                               "inner join orderDetail od on o.id = od.orderId order by o.id",
             nativeQuery = true)
     Page<Order> findOrderInfo(Pageable pagingSort);
 }
