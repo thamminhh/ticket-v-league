@@ -19,7 +19,7 @@ public class MomoController {
 
     @PostMapping("/momo")
     public void getMomoResponse(@RequestBody MoMoResponse moMoResponse){
-
+        System.out.println("IAM HERE");
         int orderId = moMoResponse.getOrderId();
         int resultCode = moMoResponse.getResultCode();
 

@@ -1,6 +1,7 @@
 package com.example.demo_tss.controller;
 
 import com.example.demo_tss.entity.CartInfo;
+import com.example.demo_tss.entity.CartLineInfo;
 import com.example.demo_tss.entity.Match;
 import com.example.demo_tss.entity.Order;
 import com.example.demo_tss.repository.OrderRepository;
@@ -41,6 +42,10 @@ public class OrderController {
 
     @PostMapping()
     public void addOrder(@RequestBody CartInfo cartInfo){
+        for (CartLineInfo line:
+             cartInfo.getCartLines()) {
+            System.out.println(line.getTicketId());
+        }
         service.saveOrder(cartInfo);
     }
     @GetMapping(produces = "application/json; charset=utf-8")
